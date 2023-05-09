@@ -7,12 +7,7 @@ import { ToDo } from "../../components/ToDo/ToDo";
 export function Home() {
   const [inputText, setInputText] = useState<string>("");
   const [todoList, setTodoList] = useState<TodoItem[]>([]);
-  const [inputText, setInputText] = useState<string>("");
-  const [todoList, setTodoList] = useState<TodoItem[]>([]);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputText(event.target.value);
-  };
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(event.target.value);
   };
@@ -26,20 +21,11 @@ export function Home() {
       };
       setTodoList([...todoList, newTodo]);
       setInputText("");
+    } else {
+      alert("Please input your task name");
     }
-    alert("Please input your task name");
   };
 
-  const handleCheckboxChange = (id: number) => {
-    const updateTodoList = todoList.map((todo) => {
-      if (todo.id === id) {
-        return { ...todo, isCompleted: !todo.isCompleted };
-      } else {
-        return todo;
-      }
-    });
-    setTodoList(updateTodoList);
-  };
   const handleCheckboxChange = (id: number) => {
     const updateTodoList = todoList.map((todo) => {
       if (todo.id === id) {
