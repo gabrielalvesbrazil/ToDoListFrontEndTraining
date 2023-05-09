@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import { TodoItem } from "../../types/TodoItemsTypes";
 import { ToDo } from "../../components/ToDo/ToDo";
+import { ToDo } from "../../components/ToDo/ToDo";
 
 export function Home() {
   const [inputText, setInputText] = useState<string>("");
@@ -21,6 +22,7 @@ export function Home() {
       };
       setTodoList([...todoList, newTodo]);
       setInputText("");
+<<<<<<< HEAD
     } else {
       alert("Please input your task name");
     }
@@ -37,6 +39,12 @@ export function Home() {
     setTodoList(updateTodoList);
   };
 
+=======
+    }
+    console.log(todoList);
+  };
+
+>>>>>>> 0becb76 (yasuda)
   return (
     <div className="container">
       <div className="header">
@@ -65,6 +73,7 @@ export function Home() {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
 import React, { useState } from "react";
 
@@ -104,6 +113,18 @@ export function Home() {
     });
     setTodoList(updateTodoList);
   };
+    const handleAddButtonClick = () => {
+        if (inputText.trim() !== "") {
+            const newTodo: TodoItem = {
+                id: new Date().getTime(),
+                text: inputText,
+                isCompleted: false,
+            };
+            setTodoList([...todoList, newTodo]);
+            setInputText("");
+        }
+        console.log(todoList);
+    };
 
   return (
     <div className="container">
@@ -134,4 +155,6 @@ export function Home() {
       </div>
     </div>
   );
+=======
+>>>>>>> 0becb76 (yasuda)
 }
