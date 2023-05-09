@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import "./styles.css";
 import { TodoItem } from "../../types/TodoItemsTypes";
+import { ToDo } from "../../components/ToDo/ToDo";
 
 export function Home() {
   const [inputText, setInputText] = useState<string>("");
@@ -21,7 +22,7 @@ export function Home() {
       setTodoList([...todoList, newTodo]);
       setInputText("");
     }
-    alert("Please input your task name");
+    console.log(todoList);
   };
 
   return (
@@ -32,8 +33,7 @@ export function Home() {
       </div>
       <div className="form">
         <input
-          id="taskInput"
-          placeholder="Create your task"
+          placeholder="my to-do list"
           type="text"
           value={inputText}
           onChange={handleInputChange}
@@ -43,10 +43,11 @@ export function Home() {
       <div className="todoListsContainer">
         <ul>
           {todoList.map((todo) => (
-            <li key={todo.id}>
-              <input type="checkbox" checked={todo.isCompleted} />
-              {todo.text}
-            </li>
+            <ToDo
+              id={todo.id}
+              text={todo.text}
+              isCompleted={todo.isCompleted}
+            />
           ))}
         </ul>
       </div>
