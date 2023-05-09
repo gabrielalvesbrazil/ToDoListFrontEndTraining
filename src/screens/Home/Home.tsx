@@ -7,7 +7,12 @@ import { ToDo } from "../../components/ToDo/ToDo";
 export function Home() {
   const [inputText, setInputText] = useState<string>("");
   const [todoList, setTodoList] = useState<TodoItem[]>([]);
+  const [inputText, setInputText] = useState<string>("");
+  const [todoList, setTodoList] = useState<TodoItem[]>([]);
 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputText(event.target.value);
+  };
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(event.target.value);
   };
@@ -22,9 +27,19 @@ export function Home() {
       setTodoList([...todoList, newTodo]);
       setInputText("");
     }
-    console.log(todoList);
+    alert("Please input your task name");
   };
 
+  const handleCheckboxChange = (id: number) => {
+    const updateTodoList = todoList.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, isCompleted: !todo.isCompleted };
+      } else {
+        return todo;
+      }
+    });
+    setTodoList(updateTodoList);
+  };
   const handleCheckboxChange = (id: number) => {
     const updateTodoList = todoList.map((todo) => {
       if (todo.id === id) {
@@ -44,7 +59,8 @@ export function Home() {
       </div>
       <div className="form">
         <input
-          placeholder="my to-do list"
+          id="taskInput"
+          placeholder="Create your task"
           type="text"
           value={inputText}
           onChange={handleInputChange}
@@ -54,14 +70,11 @@ export function Home() {
       <div className="todoListsContainer">
         <ul>
           {todoList.map((todo) => (
-            <li key={todo.id}>
-              <input
-                type="checkbox"
-                checked={todo.isCompleted}
-                onChange={() => handleCheckboxChange(todo.id)}
-              />
-              {todo.text}
-            </li>
+            <ToDo
+              id={todo.id}
+              text={todo.text}
+              isCompleted={todo.isCompleted}
+            />
           ))}
         </ul>
       </div>
