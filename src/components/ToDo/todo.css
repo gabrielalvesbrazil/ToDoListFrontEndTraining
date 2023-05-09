@@ -5,7 +5,7 @@ li {
     background-color: #1f1e25;
 }
 
-li input{
+li input {
 }
 
 #delete {
@@ -22,14 +22,16 @@ li input{
     display: flex;
     margin-left: auto;
     padding-left: 10px;
-
 }
 
 #delete:hover {
     background-color: #e3212a;
 }
 
+#delete img {
+    width: 20px;
+}
 
-#delete img{
+#edit img {
     width: 20px;
 }
